@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, sort_child_properties_last, prefer_const_constructors
+// ignore_for_file: unused_import, must_be_immutable, sort_child_properties_last, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_cake_shop_project/models/cake_shop.dart';
