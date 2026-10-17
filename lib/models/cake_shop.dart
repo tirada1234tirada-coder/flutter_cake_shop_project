@@ -9,6 +9,7 @@ class CakeShop {
   String? openCloseTime;
   String? description;
   String? website;
+  String? facebook;
   String? latitude;
   String? longitude;
 
@@ -23,7 +24,8 @@ class CakeShop {
     this.description,
     this.openCloseTime,
     this.website,
+    this.facebook,
     this.latitude,
-    this.longitude, required String facebook,
+    this.longitude,
   });
 }
