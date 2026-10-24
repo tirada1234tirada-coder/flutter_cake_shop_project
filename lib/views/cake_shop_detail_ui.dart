@@ -18,7 +18,7 @@ class CakeShopDetailUi extends StatefulWidget {
 }
 
 class _CakeShopDetailUiState extends State<CakeShopDetailUi> {
-  //โทรออก (AI)
+  //โทรออกได้
   Future<void> _makePhoneCall(String phoneNumber) async {
     final Uri launchUri = Uri(
       scheme: 'tel',
@@ -27,7 +27,7 @@ class _CakeShopDetailUiState extends State<CakeShopDetailUi> {
     await launchUrl(launchUri);
   }
 
-  //เปิดเว็บไซต์,Facebook (AI)
+  //เมธอกเปิดแอปภายนอก เช่น เปิดเว็บไซต์,Facebook,map,อื่นๆ
   Future<void> _launchInBrowser(Uri url) async {
     if (!await launchUrl(
       url,
@@ -231,6 +231,7 @@ class _CakeShopDetailUiState extends State<CakeShopDetailUi> {
                   width: double.infinity,
                   height: 300.0,
                   child: FlutterMap(
+                    //กำหนดตำแหน่งละติจูด ลองติจูด ระยะซูม
                     options: MapOptions(
                       initialCenter: LatLng(
                         double.parse(widget.cakeShopDetail!.latitude!),
@@ -238,21 +239,22 @@ class _CakeShopDetailUiState extends State<CakeShopDetailUi> {
                       ),
                       initialZoom: 15.0,
                     ),
-                    children: [
+                    //กำหนดเลเยอร์ที่จะแสดงบนแผนที่ ประกอบด้วย แผ่นที่ Marker(ตัวหมุดสีแดง)
+                    children: [//map
                       TileLayer(
                         urlTemplate:
                             'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                         userAgentPackageName:
                             'com.example.flutter_cake_shop_project',
                       ),
-                      MarkerLayer(
+                      MarkerLayer(//ตัวหมุดสีแดงในmap
                         markers: [
                           Marker(
                             point: LatLng(
                               double.parse(widget.cakeShopDetail!.latitude!),
                               double.parse(widget.cakeShopDetail!.longitude!),
                             ),
-                            child: InkWell(
+                            child: GestureDetector(
                               onTap: () {
                                 // เมื่อกดที่หมุดสีแดงจะเปิดนำทางใน Google Maps
                                 String googleMapsUrl =
